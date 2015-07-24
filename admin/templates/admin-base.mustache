@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--[if lte IE 9]>
+    <script src="../static/html5shiv.min.js"></script>
+    <![endif]-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"></link>
+
+    <link rel="stylesheet" type="text/css" href="static/fineuploader-3.4.1/fineuploader-3.4.1.css"></link>
+    <link href="static/jube.admin.css" rel="stylesheet" media="screen"></link>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="brand" href="#">jübe Modelle</a>
+
+            <div class="nav-collapse collapse">
+                <ul class="nav pull-right">
+                    <li><a href="#items">Artikel Liste</a></li>
+                    <li><a href="#media">Bilder verwalten</a></li>
+                    <li><a href="../">Zur Seite</a></li>
+                </ul>
+                <form class="navbar-form pull-right">
+                    <select id="page-selector">
+                        <option>Seite Editieren</option>
+                    </select>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="main-area">
+
+
+    <div class="container" id="pages-area">
+        <form class="form-horizontal">
+            <div class="control-group">
+                <label class="control-label" for="inputId">Nummer</label>
+
+                <div class="controls">
+                    <input type="text" disabled="disabled"  id="inputId" placeholder="id">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputTitle">Titel</label>
+
+                <div class="controls">
+                    <input type="text" id="inputTitle" placeholder="Titel">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="inputText">Text</label>
+
+                <div class="controls">
+                    <div id="wysihtml5-toolbar" class="btn-toolbar" style="display: none;">
+                        <div class="btn-group">
+                            <a class="btn" data-wysihtml5-command="bold"><span class="icon-bold"></span> Fett</a>
+                            <a class="btn" data-wysihtml5-command="italic"><span class="icon-italic"></span> Kursiv</a>
+                        </div>
+
+                        <div class="btn-group">
+                            <a class="btn" data-wysihtml5-command="createLink"><span class="icon-arrow-right"> </span> Link</a>
+                            <a class="btn" id="textarea-select-image"><span class="icon-picture"></span> Bild</a>
+                        </div>
+
+                        <div class="toolbar-dialog" data-wysihtml5-dialog="createLink" style="display: none;">
+                            <label>
+                                Link:
+                                <input data-wysihtml5-dialog-field="href" value="http://" class="text">
+                                <button class="btn btn-small" data-wysihtml5-dialog-action="save">OK</button>
+                                <button class="btn btn-small" data-wysihtml5-dialog-action="cancel">Abbrechen</button>
+                            </label>
+                        </div>
+
+                                            </div>
+                    <textarea id="inputText" class="input-block-level" rows="20">
+                    </textarea>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <div class="controls">
+                    <button id="pages-save-button" type="submit" class="btn">Speichern</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="container" id="items-area">
+        <div class="row">
+            <div class="span5">
+                <p>
+                    <button class="btn" id="items-add-new-button"><span class="icon-plus"></span> Artikel Hinzufügen</button>
+                </p>
+                <div class="well sidebar-nav" id="items-sidebar">
+                    <ul id="items-menu" class="nav">
+                        <li class="nav-header">title</li>
+                        <li class="nav"><a href="#">item</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="span7">
+                <form class="form-horizontal" id="item-edit-form">
+                    <div class="control-group">
+                        <label class="control-label" for="itemCategory">Kategorie</label>
+                        <div class="controls">
+                            <select id="itemCategory">
+                                <option value="PERSONENWAGEN" >Personenwagen</option>
+                                <option value="PACKWAGEN" >Packwagen</option>
+                                <option value="POSTWAGEN" >Postwagen</option>
+                                <option value="SPEISEWAGEN" >Speisewagen</option>
+                                <option value="BAUWAGEN" >Bauwagen</option>
+                                <option value="GUETERWAGEN" >Güterwagen</option>
+                                <option value="TELEGRAFENMASTE" >Telegrafenmaste</option>
+                                <option value="SIGNALE">Signale</option>
+                                <option value="VERKEHRSZEICHEN" >Verkehrszeichen</option>
+                                <option value="ZUBEHOER">Zubehör</option>
+                                <option value="FENSTER">Fenster</option>
+                                <option value="LITERATUR">Literatur</option>
+                                <option value="LAMPEN">Lampen</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="itemId">Artikel-Nr.</label>
+                        <div class="controls">
+                            <input type="text" id="itemId">
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="itemTitle">Bezeichnung</label>
+                        <div class="controls">
+                            <input type="text" id="itemTitle">
+                        </div>
+                    </div>
+
+
+                    <div class="control-group">
+                        <label class="control-label" for="itemDescription">Details</label>
+                        <div class="controls">
+                            <textarea id="itemDescription" class="input-block-level" rows="4"></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Bild</label>
+                        <div class="controls">
+                            <span id="item-image-preview"></span>
+                            <button class="btn btn-small" type="button" id="select-image-button">Bild auswählen</button>
+                            <input type="hidden" name="image" id="selected-image-name" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="itemPrice">Preis</label>
+                        <div class="controls">
+                            <div class="input-append">
+                                <input type="text" id="itemPrice"><span class="add-on">EUR</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <button id="items-save-button" type="submit" class="btn">Speichern</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="container" id="media-area">
+        <div class="row">
+            <div class="span12">
+                <h1>Bilder</h1>
+                <ul class="thumbnails" id="image-thumbnails">
+
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="span12">
+                <h1>Hochladen</h1>
+                <div id="media-upload-area"></div>
+                <div id="triggerUpload" class="btn btn-primary" style="margin-top: 10px;">
+                    <i class="icon-upload icon-white"></i> Hochladen
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="image-selector-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="myModalLabel">Bild auswählen</h3>
+        </div>
+        <div class="modal-body">
+            <ul class="thumbnail-preview" id="modal-thumb-selection"></ul>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="../static/jquery.min.js"></script>
+<script src="../static/bootstrap/js/bootstrap.min.js"></script>
+<script src="static/fineuploader-3.4.1/jquery.fineuploader-3.4.1.js"></script>
+
+<script src="static/xing-wysihtml5/parser_rules/advanced.js"></script>
+<script src="static/xing-wysihtml5/dist/wysihtml5-0.3.0.js"></script>
+<script src="static/juebe.admin.js"></script>
+<script src="static/juebe.admin.pages.js"></script>
+<script src="static/juebe.admin.items.js"></script>
+<script src="static/juebe.admin.media.js"></script>
+<script type="text/javascript">
+    $(JuBe.Admin.init);
+</script>
+</body>
+</html>

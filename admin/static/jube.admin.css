@@ -1,0 +1,50 @@
+#main-area {
+    margin-top: 60px;
+}
+
+#items-sidebar{
+    padding: 0px 6px 0px 6px;
+
+}
+
+#item-edit-form {
+    position:  fixed;
+}
+
+#items-sidebar .nav-header {
+    padding-left: 0;
+}
+
+.thumbnail-preview {
+
+}
+
+.thumb-selectable {
+    cursor: pointer;
+    border: 1px solid white;
+    padding: 4px;
+    margin-bottom: 5px;
+    height: 120px;
+    overflow: hidden;
+    float: left;
+    width: 230px;
+
+}
+.thumb-selectable a {
+    height: 100px;
+    display: block;
+    overflow: hidden;
+}
+
+.thumb-selectable:hover {
+    background: #fafafa;
+    border: 1px solid #08c;
+    color: #08c;
+}
+
+.toolbar-dialog {
+    border: 1px solid #08c;
+    margin: 3px;
+    padding: 8px;
+    line-height: 100%;
+}

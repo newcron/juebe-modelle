@@ -1,0 +1,11 @@
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+.idea/*
+.settings/*
+
+media/
+production_constants.php
+

@@ -1,0 +1,66 @@
+{{#standalone}}<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Bestellung</title>
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+        }
+
+        table { border-collapse: collapse; }
+        td, th {
+            padding: 1px 15px 1px 15px;
+        }
+        th {
+            border-bottom: 1px solid black;
+        }
+        td.sum {border-top: 1px solid black; }
+
+    </style>
+</head>
+<body>{{/standalone}}
+<h3>Bestellung vom {{orderDate}}</h3>
+<p>
+    {{title}} {{name}}<br/>
+    {{street}}<br/>
+    {{zip}} - {{city}}
+</p>
+<p>
+    {{phone}}<br/>
+    {{mail}}
+</p>
+<p>
+    Mitteilung:<br/>
+    {{message}}
+</p>
+<table>
+    <tr>
+        <th>Art.Nr.</th>
+        <th>Bezeichnung</th>
+        <th>Preis/Stk</th>
+        <th>Anzahl</th>
+        <th>Preis Total</th>
+    </tr>
+    {{#itemsOrdered}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{title}}</td>
+            <td>a {{price}} EUR</td>
+            <td>{{amount}}</td>
+            <td>{{totalPrice}} EUR</td>
+        </tr>
+    {{/itemsOrdered}}
+    <tr>
+        <td colspan="4" class="sum">Total</td>
+        <td class="sum">{{toPay}} EUR</td>
+    </tr>
+</table>
+{{#standalone}}
+</body>
+</html>
+{{/standalone}}

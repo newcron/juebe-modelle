@@ -1,0 +1,210 @@
+<!doctype html>
+<!--[if lt IE 9]><html class="ie"><![endif]-->
+<!--[if gte IE 9]><!-->
+<html><!--<![endif]-->
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <!--[if lte IE 9]>
+    <script src="static/html5shiv.min.js"></script>
+    <![endif]-->
+    <title>jübe Modelle</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="static/juebe.css?ver=1"/>
+
+
+    <meta name="description" content="jübe Modelle"/>
+</head>
+
+<body lang="en">
+<section id="all" class="container">
+    <header id="head" class="row">
+        <div id="head-title" class="span4">
+            <a href="{{siteBase}}"><span id="head-juebe">jübe</span> <span id="head-modelle">Modelle</span></a>
+        </div>
+        <div class="span2"><a href="{{siteBase}}">Home</a></div>
+        <div class="span2"><a href="{{siteBase}}produkte.php">Produkte</a></div>
+        <div class="span2"><a href="{{siteBase}}bestellung.php">Bestellung</a></div>
+        <div class="span2"><a href="{{siteBase}}projekte.php">Projekte</a></div>
+    </header>
+
+    <section class="row">
+        <div id="image-area" class="span12">
+            <img src="static/header.jpg" />
+        </div>
+    </section>
+
+    <article id="content" class="row">
+        <div class="span12">
+            <h2 id="page-title">{{title}}</h2>
+
+            <div id="page-content" class="content">
+                <div id="article-content">
+                    {{{content}}}
+                </div>
+
+                {{#onProductPage}}
+                    <div id="product-page-list" class="appended-content">
+                        <table class="table">
+                            {{#items}}
+                                <tr class="items-header" data-target="items-cat-{{catIndex}}">
+                                    <th colspan="3" ><span class="items-header-title">{{category}}</span></th>
+                                </tr>
+                                {{#items}}
+                                    <tr class="items-content items-cat-{{catIndex}}">
+                                        <td>{{id}}</td>
+                                        <td>
+                                            {{title}}
+                                            {{#description}}
+                                                <div class="muted">
+                                                    {{{description}}}
+                                                </div>
+                                            {{/description}}
+
+                                        </td>
+                                        <td>
+                                            {{#thumb}}
+                                                <a class="thumbnail pull-right" href="{{large}}" target="_blank"><img src="{{thumb}}"></a>
+                                            {{/thumb}}
+                                        </td>
+                                    </tr>
+                                {{/items}}
+                            {{/items}}
+                        </table>
+                    </div>
+                {{/onProductPage}}
+
+                {{#onOrderPage}}
+                    <form class="form form-horizontal appended-content" method="POST"
+                          data-action="bestellung-abschicken.php" id="purchase-form">
+
+
+                        {{#items}}
+                            <table class="table  table-condensed">
+                                <tr>
+                                    <th colspan="4">{{category}}</th>
+                                </tr>
+
+                                {{#items}}
+                                    <tr>
+                                        <td>
+                                            {{id}}
+                                        </td>
+                                        <td class="span6">
+                                            {{title}}
+                                        </td>
+                                        <td class="span2">
+                                            {{price}} EUR
+                                        </td>
+                                        <td class="span2">
+                                            <div class="input-append">
+                                                <input class="input-mini order-item"  type="text" style="text-align: right;" name="order[{{id}}]"/>
+                                                <span class="add-on">Stk.</span>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                {{/items}}
+                            </table>
+                        {{/items}}
+
+                        <div class="control-group">
+                            <label class="control-label" for="inputTitle">Name</label>
+
+                            <div class="controls">
+                                <select name="title" id="inputTitle" class="input-small">
+                                    <option>Herr</option>
+                                    <option>Frau</option>
+                                    <option>Familie</option>
+                                    <option>Firma</option>
+                                </select>
+                                <input type="text" name="name" id="inputName" class="input-xlarge"
+                                       placeholder="Vorname Nachname bzw. Firmenname"/>
+
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Straße</label>
+
+                            <div class="controls">
+                                <input type="text" name="street"  id="inputStreet" placeholder="Straße und Hausnummer"/>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label">Stadt</label>
+
+                            <div class="controls">
+                                <input type="text" name="zip" placeholder="PLZ" id="inputZip" class="input-mini"/>
+                                <input type="text" name="city" placeholder="Stadt" id="inputCity" />
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="inputPhone">Telefon</label>
+
+                            <div class="controls">
+                                <input type="text" name="phone" id="inputPhone"/>
+                            </div>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label" for="inputMail">E-Mail</label>
+
+                            <div class="controls">
+                                <input type="text" id="inputMail" name="mail"/>
+                            </div>
+                        </div>
+
+
+                        <div class="control-group">
+                            <label class="control-label">Mitteilung</label>
+
+                            <div class="controls">
+                                <textarea id="inputMessage" name="message" class="input-large" rows="5"></textarea>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" type="button" id="purchase-form-submit">Bestellen</button>
+                    </form>
+                {{/onOrderPage}}
+
+                {{#onConfirmOrderPage}}
+                    <div class="appended-content" id="purchase-order-preview-page">
+
+
+                        <div class="well" id="purchase-order-preview">
+                            {{{orderDetails}}}
+                        </div>
+                        <form action="bestellung-abgeschickt.php" method="post">
+                            <input type="hidden" value="{{orderData}}" name="order"/>
+                            <button class="btn" id="purchase-order-cancel">Abbrechen</button>
+                            <button class="btn btn-primary" >Bestellung Abschicken</button>
+                        </form>
+                    </div>
+                {{/onConfirmOrderPage}}
+
+                <div id="last-moddate" class="moddate">Letzte Änderung: {{lastModification}}</div>
+
+            </div>
+        </div>
+    </article>
+
+    <footer id="footer" class="row">
+        <div class="span2"><a href="{{siteBase}}links.php">Links</a></div>
+        <div class="span2"><a href="{{siteBase}}kontakt.php">Kontakt</a></div>
+        <div class="span2"><a href="{{siteBase}}impressum.php">Impressum</a></div>
+        <div class="span2"><a href="{{siteBase}}agb.php">AGB</a></div>
+    </footer>
+</section>
+<script src="{{siteBase}}static/jquery.min.js"></script>
+<script src="{{siteBase}}static/JuBe.js?ver=1"></script>
+</body>
+</html>

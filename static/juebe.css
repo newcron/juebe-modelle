@@ -1,0 +1,120 @@
+
+header {
+    margin-top: 1em;
+}
+
+header a, footer a {
+    padding: 12px;
+    background: #D8C358;
+    text-align: center;
+    display: block;
+    color: white;
+    font-size: 1.2em;
+}
+
+header a {
+    margin-top: 16px;
+}
+
+header a:hover, footer a:hover {
+    text-decoration: none;
+    color: white;
+    background: black;
+}
+
+#head-title a {
+    margin-top: 0;
+    padding: 20px;
+    background: #6E083A;
+    font-size: 1.6em;
+}
+
+#head-modelle {
+    color: #D1A49D;
+}
+
+#image-area {
+    margin-top: 20px;
+
+    border: 1px solid black;
+}
+
+#page-title {
+    margin: 20px 0 0 0;
+    background: #6E083A;
+    color: white;
+    padding: 5px 20px 5px 20px;
+    font-size: 1.6em;
+    font-weight: normal;
+}
+
+#page-content {
+    padding:  20px;
+    background: #E9E9E9;
+}
+
+#page-content a {
+    color: #6E083A;
+}
+
+footer {
+    margin-top: 20px;
+}
+
+
+.appended-content {
+    margin-top: 20px;
+}
+
+
+table th {
+    border-bottom: 1px solid #6E083A;
+    border-top: 0px!important;
+}
+
+table td {
+    border-bottom: 1px solid #D8C358;
+}
+
+.items-header {
+    cursor: pointer;
+}
+
+.items-header.items-open, .items-header:hover {
+    background: #D8C358;
+}
+
+
+.items-content {
+    display: none;
+}
+
+.items-open {
+    display: table-row;
+}
+
+
+.is-erroneous {
+    border-color: red!important;
+}
+.error-desc {
+    color: red;
+    font-size: 0.8em;
+}
+
+
+#purchase-order-preview table { border-collapse: collapse; }
+
+#purchase-order-preview td, th {
+    padding: 1px 15px 1px 15px;
+}
+#purchase-order-preview th {
+    border-bottom: 1px solid black;
+}
+#purchase-order-preview td.sum {border-top: 1px solid black; }
+
+
+.moddate {
+    margin-top: 35px;
+    text-align: right;
+}
