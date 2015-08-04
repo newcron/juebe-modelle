@@ -1,5 +1,5 @@
 <?php
-#@include_once "production_constants-x.php";
+@include_once "production_constants.php";
 
 if(!defined("PROD_CONSTANTS_IN_USE")) {
     define("SITE_BASE", "http://localhost/j2/");

@@ -29,6 +29,12 @@
             e.preventDefault();
             saveItem(readForm());
         });
+        $("#items-delete-button").click(function(e){
+            var id = readForm().id;
+            if(confirm("Wirklich Artikel nr. "+id+" löschen?")) {
+                deleteItem(id);
+            }
+        });
         $("#items-add-new-button").click(function(){
             setupNewEntryForm()
         });
@@ -162,13 +168,27 @@
         $formField.val(imageName);
     }
 
+    function deleteItem(itemId) {
+        $.ajax("items.delete.json.php", {
+            dataType: "json",
+            data: {id: itemId},
+            type: "POST",
+            success: function(data) {
+                JuBe.Admin.OnlyOnSuccess(data, function(){
+                    window.location.reload();
+                });
+            },
+            error: JuBe.Admin.errorAlert
+
+        });
+    }
+
     function saveItem(item) {
         $.ajax("items.save.json.php", {
             dataType: "json",
             data: item,
             type: "POST",
             success: function(data){
-                console.log(data);
                 JuBe.Admin.OnlyOnSuccess(data, function(){
                     window.location.reload();
                 });

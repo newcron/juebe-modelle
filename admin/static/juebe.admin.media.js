@@ -48,11 +48,24 @@
         $thumbArea.children().remove();
         $.ajax("images.list.json.php").success(function(data){
             $.each(data, function(){
-                console.log(this);
-                $('<li class="thumb-selectable"><div class="caption"><strong>'+this.name+'</strong></div><a href="'+this.full+'" target="_blank"><img src="'+this.thumb+'" /></a></li>').appendTo($thumbArea);
+                $('<li class="thumb-selectable"><div class="caption"><strong>'+this.name+'</strong><div style="float: right" data-delete="'+this.name+'" class="action-delete icon icon-trash"></div></div><a href="'+this.full+'" target="_blank"><img src="'+this.thumb+'" /></a></li>').appendTo($thumbArea);
+            });
+            $('.action-delete').click(function(){
+                var id = $(this).attr("data-delete");
+                if(confirm("Bild "+id+" wirklich löschen?")) {
+                    deleteImage(id);
+                }
             });
         });
     }
 
+    function deleteImage(imageId) {
+        $.ajax("images.delete.json.php", {
+            data: {
+                id: imageId
+            }
+        }).success(refreshImageList);
+    }
 
-})()
+
+})();
